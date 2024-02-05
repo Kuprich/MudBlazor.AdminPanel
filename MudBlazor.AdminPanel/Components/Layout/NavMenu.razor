@@ -1,17 +1,36 @@
 ﻿<MudNavMenu Style="overflow:hidden">
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+
+
+    <MudMenu Icon="@Icons.Material.Filled.Home" Label="Home" Variant="Variant.Filled" Color="Color.Primary">
+        <MudMenuItem>OnClick Only</MudMenuItem>
+        <MudMenuItem>OnTouch Only</MudMenuItem>
+        <MudMenuItem>Both OnClick and OnTouch</MudMenuItem>
+    </MudMenu>
+
+
     <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
     <MudNavLink Href="weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Weather</MudNavLink>
-	<MudNavLink Href="auth" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Auth Required</MudNavLink>
+    <MudNavLink Href="auth" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Auth Required</MudNavLink>
 
-	<AuthorizeView>
-		<Authorized>
-			<MudNavLink Href="Account/Manage" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">@context.User.Identity?.Name</MudNavLink>
-		</Authorized>
-		<NotAuthorized>
-			<MudNavLink Href="Account/Register" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Register</MudNavLink>
-			<MudNavLink Href="Account/Login" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Login</MudNavLink>
-		</NotAuthorized>
-	</AuthorizeView>
+    <AuthorizeView>
+        <Authorized>
+            <MudNavLink Href="Account/Manage" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">@context.User.Identity?.Name</MudNavLink>
+            </Authorized>
+            <NotAuthorized>
+                <MudNavLink Href="Account/Register" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Register</MudNavLink>
+                <MudNavLink Href="Account/Login" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Login</MudNavLink>
+            </NotAuthorized>
+        </AuthorizeView>
+    </MudNavMenu>
 
-</MudNavMenu>
+    @code {
+    public bool _isOpen = false;
+
+    public void ToggleOpen()
+    {
+        if (_isOpen)
+            _isOpen = false;
+        else
+            _isOpen = true;
+    }
+}
