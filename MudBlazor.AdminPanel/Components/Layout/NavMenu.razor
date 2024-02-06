@@ -1,37 +1,57 @@
-﻿<MudNavMenu Style="overflow:hidden">
+﻿
+<MudNavMenu Style="overflow:hidden">
 
-    <MudMenu Icon="@Icons.Material.Filled.Home" Label="Home" Variant="Variant.Filled" Color="Color.Primary">
-        <MudMenuItem>OnClick Only</MudMenuItem>
-        <MudMenuItem>OnTouch Only</MudMenuItem>
-        <MudMenuItem>Both OnClick and OnTouch</MudMenuItem>
-    </MudMenu>
+    <MudText Typo="Typo.h6" Class="px-4">Admin Panel</MudText>
+    <MudText Typo="Typo.body2" Class="px-4 mud-text-secondary">Made with MudBalzor</MudText>
+    <MudDivider Class="my-2" />
 
     <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
     <MudNavLink Href="weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Weather</MudNavLink>
     <MudNavLink Href="auth" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Auth Required</MudNavLink>
 
-    <AuthorizeView>
+    @if (IsDrawerOpen)
+    {
+        <MudNavGroup Title="Level 0" Icon="@Icons.Material.Filled.Settings">
+            <MudNavLink Href="#1" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Item1</MudNavLink>
+            <MudNavLink Href="#2" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Item2</MudNavLink>
+            <MudNavLink Href="#3" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Item3</MudNavLink>
+        </MudNavGroup>
 
-        <Authorized>
-            <MudNavLink Href="Account/Manage" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">@context.User.Identity?.Name</MudNavLink>
-        </Authorized>
+        <MudNavGroup Title="Level 1" Icon="@Icons.Material.Filled.Add">
+            <MudNavLink Href="#1" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Item1</MudNavLink>
+            <MudNavLink Href="#2" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Item2</MudNavLink>
+            <MudNavLink Href="#3" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Item3</MudNavLink>
+        </MudNavGroup>
+    }
+    else
+    {
+        <MudMenu Dense="true" AnchorOrigin="Origin.CenterRight" TransformOrigin="Origin.CenterLeft">
+            <ActivatorContent>
+                <MudNavLink ActiveClass="" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List"></MudNavLink>
+            </ActivatorContent>
+            <ChildContent>
+                <MudMenuItem>Item1</MudMenuItem>
+                <MudMenuItem>Item2</MudMenuItem>
+                <MudMenuItem>Item3</MudMenuItem>
+            </ChildContent>
+        </MudMenu>
 
-        <NotAuthorized>
-            <MudNavLink Href="Account/Register" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Register</MudNavLink>
-            <MudNavLink Href="Account/Login" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Login</MudNavLink>
-        </NotAuthorized>
+        <MudMenu Dense="true">
+            <ActivatorContent >
+                <MudNavLink ActiveClass="" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add" />
+            </ActivatorContent>
+            <ChildContent>
+                <MudMenuItem>Item1</MudMenuItem>
+                <MudMenuItem>Item2</MudMenuItem>
+                <MudMenuItem>Item3</MudMenuItem>
+            </ChildContent>
+        </MudMenu>
+    }
 
-    </AuthorizeView>
 </MudNavMenu>
 
-    @code {
-    public bool _isOpen = false;
+@code {
 
-    public void ToggleOpen()
-    {
-        if (_isOpen)
-            _isOpen = false;
-        else
-            _isOpen = true;
-    }
+    [Parameter]
+    public bool IsDrawerOpen { get; set; }
 }

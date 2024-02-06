@@ -12,10 +12,7 @@
 
     <AuthorizeView>
         <MudDrawer @bind-Open="@_drawerOpen" ClipMode="DrawerClipMode.Always" Breakpoint="Breakpoint.Md" Elevation="1" Variant="@DrawerVariant.Mini">
-            <MudDrawerHeader>
-                <MudText Typo="Typo.h6">@_drawerHeader</MudText>
-            </MudDrawerHeader>
-            <NavMenu />
+            <NavMenu IsDrawerOpen="_drawerOpen"/>
         </MudDrawer>
     </AuthorizeView>
 
