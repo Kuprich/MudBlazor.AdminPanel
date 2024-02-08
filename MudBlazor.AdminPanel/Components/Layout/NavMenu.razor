@@ -1,5 +1,5 @@
 ﻿
-<MudNavMenu Style="overflow:hidden" Bordered="true">
+<MudNavMenu Style="overflow:hidden" Bordered="true" Color="Color.Primary">
 
     <MudPaper Elevation="0" Class="my-3 ml-5 d-flex flex-row align-center nav-menu__title">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1404 1404" class="mudblazor-logo mr-3">
@@ -13,20 +13,9 @@
 
     <MudPaper Class="nav-menu__group mt-6 grey-text text-darken-2" Elevation="0">
         <MudText Class="select-none ml-5 grey-text text-darken-2" Typo="Typo.overline">General</MudText>
-
         <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
         <MudNavLink Href="weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Weather</MudNavLink>
         <MudNavLink Href="auth" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Auth Required</MudNavLink>
-
-        <MudList Clickable="true">
-            <MudListItem Text="Level 0" InitiallyExpanded="false">
-                <NestedList>
-                    <MudNavLink Href="#1" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Item1</MudNavLink>
-                    <MudNavLink Href="#2" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Item2</MudNavLink>
-                    <MudNavLink Href="#3" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Item3</MudNavLink>
-                </NestedList>
-            </MudListItem>
-        </MudList>
 
         <MudNavGroup Title="Level 1" Icon="@Icons.Material.Filled.Add">
             <MudNavLink Href="#1" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Item1</MudNavLink>
