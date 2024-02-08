@@ -1,6 +1,6 @@
 ﻿
 <AuthorizeView>
-    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@DrawerToggleCallback" />
+    <MudIconButton Icon="@ToggleIcon" Color="Color.Inherit" Edge="Edge.Start" OnClick="@DrawerToggleCallback" />
 </AuthorizeView>
 
 <MudSpacer />
@@ -9,7 +9,6 @@
     <AuthorizeView>
         <Authorized>
             <div class="d-flex">
-
                 <MudMenu FullWidth="true">
                     <ActivatorContent>
                         <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Primary">Account</MudChip>
@@ -21,18 +20,20 @@
                         <MudMenuItem>Sign Out</MudMenuItem>
                     </ChildContent>
                 </MudMenu>
-                
             </div>
-            
+
 
         </Authorized>
         <NotAuthorized>
-            <div class="d-flex">
-                <MudNavLink Href="Account/Register" Match="NavLinkMatch.Prefix">Register</MudNavLink>
+
+            <MudNavMenu Rounded="true" Class="d-flex flex-row me-8 app-bar__nav-menu">
+                <MudNavLink Href="Account/Register" Match="NavLinkMatch.Prefix" Class="me-2">Register</MudNavLink>
                 <MudNavLink Href="Account/Login" Match="NavLinkMatch.Prefix">Login</MudNavLink>
-            </div>
+            </MudNavMenu>
+
         </NotAuthorized>
     </AuthorizeView>
+
 </div>
 
 <MudIconButton Icon="@Icons.Custom.Brands.MudBlazor" Color="Color.Inherit" Href="https://mudblazor.com/" Target="_blank" />
@@ -41,4 +42,9 @@
 @code {
     [Parameter]
     public EventCallback DrawerToggleCallback { get; set; }
+
+    [Parameter]
+    public bool IsDrawerOpen { get; set; }
+
+    private string ToggleIcon => IsDrawerOpen ? @Icons.Material.Filled.MenuOpen : @Icons.Material.Filled.Menu;
 }

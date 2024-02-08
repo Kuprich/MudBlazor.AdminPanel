@@ -18,3 +18,23 @@
     --bs-nav-link-color: var(--mud-palette-primary) !important;
     --bs-nav-link-hover-color: var(--mud-palette-primary-darken) !important;
 }
+
+.br-1 {
+    border-right: 1px solid #E0E0E0;
+}
+
+.select-none{
+    user-select: none
+}
+
+.app-bar__nav-menu .mud-nav-item {
+    width: auto;
+}
+.app-bar__nav-menu .mud-nav-link .mud-nav-link-text {
+    margin-left: 0;
+    margin-inline-start: 0;
+}
+
+.mudblazor-logo {
+    width: 40px;
+}

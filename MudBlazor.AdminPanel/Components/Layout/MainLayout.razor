@@ -1,33 +1,35 @@
 ﻿@inherits LayoutComponentBase
 @using MudBlazor.AdminPanel.Components
+@using MudBlazor.Utilities
 
 <MyMudThemeProvider />
 <MyMudProviders />
 
 <MudLayout>
 
-    <MudAppBar Elevation="1" Dense="true">
-        <AppBar DrawerToggleCallback="DrawerToggle" />
+    <MudAppBar Elevation="0" Style="@($"background-color:{Theme.Palette.White}; color:{Theme.Palette.TextPrimary};")">
+        <AppBar IsDrawerOpen="_drawerOpen" DrawerToggleCallback="DrawerToggle" />
     </MudAppBar>
 
     <AuthorizeView>
-        <MudDrawer @bind-Open="@_drawerOpen" ClipMode="DrawerClipMode.Always" Breakpoint="Breakpoint.Md" Elevation="1" Variant="@DrawerVariant.Mini">
-            <NavMenu IsDrawerOpen="_drawerOpen"/>
+        <MudDrawer @bind-Open="@_drawerOpen" ClipMode="DrawerClipMode.Never" Breakpoint="Breakpoint.Md" Elevation="0" Class="br-1">
+            <NavMenu />
         </MudDrawer>
     </AuthorizeView>
 
-
-        <MudMainContent class="d-flex justify-center align-center mud-height-full">
-            <MudContainer MaxWidth="MaxWidth.Large" Class="my-16 pt-16">
-                @Body
+    <MudMainContent Class="d-flex justify-center align-center mud-height-full">
+        <MudContainer MaxWidth="MaxWidth.Large" Class="my-16 pt-16">
+            @Body
         </MudContainer>
     </MudMainContent>
 
 </MudLayout>
 
 @code {
+    private MudTheme Theme = new MudTheme();
+
     bool _drawerOpen = true;
-    string _drawerHeader => _drawerOpen ? "MudBlazorTemplates" : "";
+    string _drawerHeader => _drawerOpen ? "MKupudBlazorTemplates" : "";
 
     public bool DrawerOpen
     {
