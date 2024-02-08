@@ -1,0 +1,21 @@
+﻿@if (NavItemModel != null)
+{
+    @if (NavItemModel.NavItems != null && NavItemModel.NavItems.Count >= 1)
+    {
+        <MudNavGroup Title="@NavItemModel.Title" Icon="@NavItemModel.Icon">
+            @foreach (var childNavItem in NavItemModel.NavItems)
+            {
+                <NavItem NavItemModel="childNavItem" />
+            }
+        </MudNavGroup>
+    }
+    else
+    {
+        <MudNavLink Href="@NavItemModel.Href" Match="@NavItemModel.Match" Icon="@NavItemModel.Icon">@NavItemModel.Title</MudNavLink>
+    }
+}
+
+@code {
+    [Parameter]
+    public NavItemModel? NavItemModel { get; set; }
+}

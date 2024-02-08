@@ -1,0 +1,23 @@
+﻿@if (NavGropModel != null)
+{
+    <MudPaper Class="nav-menu__group mt-6 grey-text text-darken-2" Elevation="0">
+
+        <MudText Class="select-none ml-5 grey-text text-darken-2" Typo="Typo.overline">@NavGropModel.Title</MudText>
+
+        @if (NavGropModel.NavItems != null)
+        {
+            @foreach (var navItem in NavGropModel.NavItems)
+            {
+                <NavItem NavItemModel="navItem" />
+            }
+        }
+
+    </MudPaper>
+}
+
+
+
+@code {
+    [Parameter]
+    public NavGropModel? NavGropModel { get; set; }
+}

@@ -1,0 +1,54 @@
+﻿
+<MudNavMenu Style="overflow:hidden" Bordered="true" Color="Color.Primary">
+
+    <MudPaper Elevation="0" Class="my-3 ml-5 d-flex flex-row align-center nav-menu__title">
+        <img src="img/mud-logo.svg" class="mudblazor-logo mr-3" />
+        <MudText Typo="Typo.h6" Class="select-none">Mud Blazor</MudText>
+    </MudPaper>
+
+    <NavGroup NavGropModel="generalNavs" />
+
+    <NavGroup NavGropModel="experimentalNavs" />
+
+    @*     <MudPaper Class="nav-menu__group mt-6 grey-text text-darken-2" Elevation="0">
+    <MudText Class="select-none ml-5 grey-text text-darken-2" Typo="Typo.overline">General</MudText>
+    <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
+    <MudNavLink Href="weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Weather</MudNavLink>
+    <MudNavLink Href="profile" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Profile</MudNavLink>
+
+    <MudNavGroup Title="Level 1" Icon="@Icons.Material.Filled.Add">
+    <MudNavLink Href="#1" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Item1</MudNavLink>
+    <MudNavLink Href="#2" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Item2</MudNavLink>
+    <MudNavLink Href="#3" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Item3</MudNavLink>
+    </MudNavGroup>
+    </MudPaper> *@
+
+</MudNavMenu>
+
+@code {
+
+    private NavGropModel generalNavs = new NavGropModel("General", new List<NavItemModel>
+    {
+        new NavItemModel(Href: "counter", Title: "Counter", Icon: Icons.Material.Filled.Calculate),
+        new NavItemModel(Href: "weather", Title: "Wether", Icon: Icons.Material.Filled.WbSunny),
+        new NavItemModel(Href: "account/manage", Title: "Manage", Icon: Icons.Material.Filled.ManageAccounts),
+    });
+
+    private NavGropModel experimentalNavs = new NavGropModel("Experimental", new List<NavItemModel>
+    {
+        new NavItemModel(Href: "#1", Title: "Dashboard", Icon: @Icons.Material.Filled.SpaceDashboard, NavItems: new List<NavItemModel>
+        {
+           new NavItemModel(Href: "#11", Title: "E-Commerce"),
+           new NavItemModel(Href: "#12", Title: "Components", NavItems: new List<NavItemModel>
+           {
+              new NavItemModel(Href: "#121", Title: "AppBar"),
+              new NavItemModel(Href: "#121", Title: "Data Grid"),
+              new NavItemModel(Href: "#121", Title: "Element"),
+              new NavItemModel(Href: "#121", Title: "Icons"),
+              new NavItemModel(Href: "#121", Title: "Paper"),
+           }), 
+        }),
+    });
+
+}
+
